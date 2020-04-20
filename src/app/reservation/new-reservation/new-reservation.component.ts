@@ -52,6 +52,8 @@ export class NewReservationComponent implements OnInit, OnDestroy {
     var now = new Date();
     this.minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     this.maxDate = new Date(this.minDate.getTime()+ 24*60*60*1000*7);
+
+    //
   }
 
   ngOnInit() {
