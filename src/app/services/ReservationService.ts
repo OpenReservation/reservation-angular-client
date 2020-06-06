@@ -11,11 +11,11 @@ import { ConfigService } from './ConfigService';
 export class ReservationService extends BaseService<Reservation>{
 
   constructor(http: HttpClient, config: ConfigService){
-    super(http, config, 'Reservation');
+    super(http, config, 'Reservations');
   }
 
   public NewReservation(reservation: Reservation, captchaType: string, captcha: string): Observable<any>{
-    return this.http.post<any>(`${this.apiBaseUrl}/api/reservation`, reservation, {
+    return this.http.post<any>(`${this.apiBaseUrl}/api/reservations`, reservation, {
       headers: {
         "captcha": captcha,
         "captchaType": captchaType

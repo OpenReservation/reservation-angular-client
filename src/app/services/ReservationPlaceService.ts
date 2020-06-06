@@ -12,11 +12,11 @@ import { ConfigService } from './ConfigService';
 export class ReservationPlaceService extends BaseService<ReservationPlace>{
 
   constructor(http: HttpClient, config: ConfigService){
-    super(http, config, 'ReservationPlace');
+    super(http, config, 'ReservationPlaces');
   }
 
   public getAvailablePeriods(placeId:string, date: string) : Observable<Array<ReservationPeriod>>{
-    return this.http.get<Array<ReservationPeriod>>(`${this.apiBaseUrl}/api/reservationPlace/${placeId}/periods?dt=${date}`);
+    return this.http.get<Array<ReservationPeriod>>(`${this.apiBaseUrl}/api/reservationPlaces/${placeId}/periods?dt=${date}`);
   }
 
 }
