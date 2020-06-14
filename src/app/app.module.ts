@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { LoginComponent } from './account/login/login.component';
+import { AuthCallbackComponent } from './account/auth-callback/auth-callback.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     NoticeDetailComponent,
     AboutComponent,
     SanitizeHtmlPipe,
+    LoginComponent,
+    AuthCallbackComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,11 +39,15 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    OAuthModule.forRoot(),
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['https://reservation.weihanli.xyz/api'],
+        sendAccessToken: true
+      }
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
-    { provide: ErrorHandler, useClass: SentryErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

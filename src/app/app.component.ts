@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MenuItem } from './models/MenuItem';
 import { Router, NavigationStart } from '@angular/router'; 
 import { LoadingService } from './services/LoadingService';
+import { OAuthService } from 'angular-oauth2-oidc';
+import * as authConfig from './shared/authConfig';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,12 @@ import { LoadingService } from './services/LoadingService';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  constructor(public loadingSvc: LoadingService, private router:Router) { 
+  constructor(public loadingSvc: LoadingService, 
+        private router:Router,
+        private oauth: OAuthService
+    ) {
+    this.oauth.configure(authConfig.authCodeFlowConfig);
+
     this.loadingSvc.isLoading = true;
     this.router.events.subscribe((e) => { if(e instanceof NavigationStart) {this.loadingSvc.isLoading = true;} });
   }
