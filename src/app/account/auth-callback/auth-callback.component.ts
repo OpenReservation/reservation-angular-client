@@ -9,11 +9,19 @@ import { Router } from '@angular/router';
 })
 export class AuthCallbackComponent implements OnInit {
 
-  constructor(private oauthService: OAuthService, private router:Router) { 
-    this.oauthService.loadDiscoveryDocumentAndTryLogin()
-      .then(_=> router.navigate(['/reservation/new']));
+  constructor(private oauthService: OAuthService, private router:Router) {
   }
+
   ngOnInit(): void {
+    this.oauthService.loadDiscoveryDocumentAndTryLogin()
+    .then(_=> {
+      //var accessToken = this.oauthService.getAccessToken();
+      //console.log(`access token: ${accessToken}`);
+
+      this.oauthService.loadUserProfile().then(x=>{
+        this.router.navigate(['/reservation/new']);
+      });
+    });
   }
 
 }

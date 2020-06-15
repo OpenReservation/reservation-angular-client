@@ -41,13 +41,9 @@ export const authCodeFlowConfig: AuthConfig = {
 
   responseType: 'code',
 
-  // set the scope for the permissions the client should request
-  // The first four are defined by OIDC.
-  // Important: Request offline_access to get a refresh token
-  // The api scope is a usecase specific one
   scope: false
-    ? 'openid profile'
-    : 'openid profile offline_access',
+    ? 'openid profile ReservationApi'
+    : 'openid profile ReservationApi offline_access',
 
   // ^^ Please note that offline_access is not needed for silent refresh
   // At least when using idsvr, this even prevents silent refresh
@@ -64,7 +60,8 @@ export const authCodeFlowConfig: AuthConfig = {
 
   sessionChecksEnabled: true,
 
-  //timeoutFactor: 0.01,
+  timeoutFactor: 0.01,
+
   // disablePKCI: true,
 
   clearHashAfterLogin: false

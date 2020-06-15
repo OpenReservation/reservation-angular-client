@@ -9,13 +9,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private oauthService: OAuthService, private router:Router) { 
-    this.oauthService.loadDiscoveryDocument()
-      .then(_=> this.oauthService.initLoginFlow());
+  constructor(private oauthService: OAuthService, private router:Router) {
   }
 
   ngOnInit(): void {
-    
+    this.oauthService.initLoginFlow();
   }
 
 }
