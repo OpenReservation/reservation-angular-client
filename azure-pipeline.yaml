@@ -1,0 +1,23 @@
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/run-number?view=azure-devops&tabs=yaml
+name: $(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  displayName: buildAndPush
+  inputs:
+    containerRegistry: dockerHub/weihanli
+    repository: 'openreservation/angular-client'
+    Dockerfile: Dockerfile
+    tags: |
+     $(Build.BuildNumber)
+     latest
+
+- task: SSH@0
+  displayName: 'Run shell inline on remote machine'
+  inputs:
+    sshEndpoint: 'weihanli-vm'
+    runOptions: inline
+    inline: 'kubectl set image deployment/reservation-client reservation-client=openreservation/angular-client:$(Build.BuildNumber) --record=true'
