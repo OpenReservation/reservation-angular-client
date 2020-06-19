@@ -3,13 +3,13 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app.material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
 import { NoticeListComponent } from './notice/notice-list/notice-list.component';
 import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.component';
 import { AboutComponent } from './about/about.component';
 import { SanitizeHtmlPipe } from './shared/pipes/safe-html';
-import { SentryErrorHandler } from './shared/sentryErrorHandler';
+import { ResponseInterceptor } from './shared/interceptors/response.interceptor';
 import { NewReservationComponent } from './reservation/new-reservation/new-reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +48,11 @@ import { AuthCallbackComponent } from './account/auth-callback/auth-callback.com
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
