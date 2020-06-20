@@ -8,16 +8,18 @@ import { NewReservationComponent } from './reservation/new-reservation/new-reser
 import { LoginComponent } from './account/login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthCallbackComponent } from './account/auth-callback/auth-callback.component';
+import { MyReservationComponent } from './account/my-reservation/my-reservation.component';
 
 const routes: Routes = [
   { path: '', component: ReservationListComponent },
-  { path: 'reservation/new', component:NewReservationComponent, canActivate: [AuthGuard] },
-  { path: 'reservation', component: ReservationListComponent },
+  { path: 'reservations/new', component:NewReservationComponent, canActivate: [AuthGuard] },
+  { path: 'reservations', component: ReservationListComponent },
   { path: 'notice', component: NoticeListComponent },
   { path: 'notice/:noticePath', component: NoticeDetailComponent },
   { path: 'about', component: AboutComponent },
   { path: 'account/login', component: LoginComponent },
   { path: 'account/callback', component: AuthCallbackComponent },
+  { path: 'account/reservations', component: MyReservationComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/'}
 ];
 

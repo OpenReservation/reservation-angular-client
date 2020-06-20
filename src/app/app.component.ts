@@ -27,7 +27,8 @@ export class AppComponent {
 
   menus: Array<MenuItem> = [
     { Title: "首页", Link: "/" },
-    { Title: "预约", Link: "/reservation/new"},
+    { Title: "我的", Link: "/account/reservations"},
+    { Title: "预约", Link: "/reservations/new"},
     { Title: "公告", Link: "/notice" },
     { Title: "关于", Link: "/about" },
   ];

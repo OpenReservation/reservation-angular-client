@@ -4,6 +4,7 @@ import { Reservation } from '../models/Reservation';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ConfigService } from './ConfigService';
+import { PagedListData } from '../models/PagedListData';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class ReservationService extends BaseService<Reservation>{
         "captchaType": captchaType
       }
     });
+  }
+
+  public MyReservations(params:any): Observable<PagedListData<Reservation>>{
+    return this.http.get<PagedListData<Reservation>>(`${this.apiBaseUrl}/api/reservations/user?pageNumber=${params.pageNumber}&pageSize=${params.pageSize}`);
   }
 }

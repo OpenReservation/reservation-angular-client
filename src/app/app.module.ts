@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { LoginComponent } from './account/login/login.component';
 import { AuthCallbackComponent } from './account/auth-callback/auth-callback.component';
+import { MyReservationComponent } from './account/my-reservation/my-reservation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AuthCallbackComponent } from './account/auth-callback/auth-callback.com
     SanitizeHtmlPipe,
     LoginComponent,
     AuthCallbackComponent,
+    MyReservationComponent,
   ],
   imports: [
     BrowserModule,
