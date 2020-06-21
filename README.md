@@ -7,7 +7,7 @@ OpenReservation angular 客户端，使用 angular 9 + material 开发，支持�
 ## Docker
 
 ``` bash
-docker run -d -p 8081:80 weihanli/reservation-client:latest
+docker run -d -p 8081:80 openreservation/angular-client:latest
 ```
 
 ## Kubernetes
