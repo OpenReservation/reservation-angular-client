@@ -3,9 +3,16 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { LoadingService } from 'src/app/services/LoadingService';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
+
+  constructor(private loadingSvc:LoadingService,
+    public snackBar: MatSnackBar
+    ){
+  }
 
   intercept (
     request : HttpRequest<any>,
@@ -17,10 +24,17 @@ export class ResponseInterceptor implements HttpInterceptor {
         console.log('response received');
       }
     }, (error : HttpErrorResponse) => {
-      if (error.status === 401 || error.status === 403) {
-        console.error('您没有权限进行此操作，请登陆后重试');
+      console.error(error);
+
+      if (error.status === 401) {
+        this.snackBar.open('您当前没有权限进行此操作，请登录后重试');
       } else if(error.status === 400){
-        console.log('请求参数异常');
+        this.snackBar.open('请求参数异常');
+      } else if(error.status === 403){
+        this.snackBar.open('您当前没有权限进行此操作');
+      }
+      if(this.loadingSvc.isLoading === true){
+        this.loadingSvc.isLoading = false;
       }
     }));
   }
