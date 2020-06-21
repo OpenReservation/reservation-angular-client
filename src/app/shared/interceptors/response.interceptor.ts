@@ -27,11 +27,17 @@ export class ResponseInterceptor implements HttpInterceptor {
       console.error(error);
 
       if (error.status === 401) {
-        this.snackBar.open('您当前没有权限进行此操作，请登录后重试');
+        this.snackBar.open('您当前没有权限进行此操作，请登录后重试', "" , {
+          duration: 2000,
+        });
       } else if(error.status === 400){
-        this.snackBar.open('请求参数异常');
+        this.snackBar.open('请求参数异常', "" , {
+          duration: 2000,
+        });
       } else if(error.status === 403){
-        this.snackBar.open('您当前没有权限进行此操作');
+        this.snackBar.open('您当前没有权限进行此操作', "" , {
+          duration: 2000,
+        });
       }
       if(this.loadingSvc.isLoading === true){
         this.loadingSvc.isLoading = false;
