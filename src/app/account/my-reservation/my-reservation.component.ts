@@ -45,6 +45,10 @@ export class MyReservationComponent implements OnInit {
     { 
       ColumnName:'ReservationTime',
       DisplayName: "预约时间" 
+    },
+    {
+      ColumnName:'Operations',
+      DisplayName: "操作" 
     }
   ];
 
@@ -65,6 +69,12 @@ export class MyReservationComponent implements OnInit {
     if(this.loadingSvc.isLoading === false){
       this.loadingSvc.isLoading = true;
     }
+    if(!params){
+      params = {
+        pageNumber: 1,
+        pageSize: 10
+      };
+    }
     this.svc.MyReservations(params)
     .subscribe(data => {
       console.log(data);
@@ -76,6 +86,20 @@ export class MyReservationComponent implements OnInit {
       // 修改 LoadingService 的 isLoading
       this.loadingSvc.isLoading = false;
     });
+  }
+
+  cancel(reservationId){
+    console.log(`reservation(${reservationId}) is canceling`);
+    if(this.loadingSvc.isLoading === false){
+      this.loadingSvc.isLoading = true;
+    }
+    this.svc.CancelReservation(reservationId)
+    .subscribe(data=>{
+      console.log(data);
+      this.loadData();
+      
+      this.loadingSvc.isLoading = false;
+    })
   }
 
   onPageEvent(pageParams){

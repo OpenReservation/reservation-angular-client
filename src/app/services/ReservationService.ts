@@ -27,4 +27,8 @@ export class ReservationService extends BaseService<Reservation>{
   public MyReservations(params:any): Observable<PagedListData<Reservation>>{
     return this.http.get<PagedListData<Reservation>>(`${this.apiBaseUrl}/api/reservations/user?pageNumber=${params.pageNumber}&pageSize=${params.pageSize}`);
   }
+
+  public CancelReservation(id:string): Observable<any>{
+    return this.http.delete<any>(`${this.apiBaseUrl}/api/reservations/${id}`);
+  }
 }
