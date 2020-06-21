@@ -7,7 +7,7 @@
             <span *ngIf="column.ColumnName === 'ReservationTime'">{{ element[column.ColumnName] | date:'yyyy-MM-dd HH:mm:ss' }}</span>
             <span *ngIf="column.ColumnName != 'ReservationTime' && column.ColumnName != 'ReservationForTime' && column.ColumnName != 'Operations'">{{element[column.ColumnName]}}</span>
             <div *ngIf="column.ColumnName === 'Operations'">
-              <button mat-flat-button color="warn" *ngIf="element['ReservationStatus'] !== 4" (click)="cancel(element['ReservationId'])">取消</button>
+              <button mat-flat-button color="warn" *ngIf="element['ReservationStatus'] !== 4 && isDateLaterThanNow(element['ReservationForDate'])" (click)="cancel(element['ReservationId'])">取消</button>
               <span *ngIf="element['ReservationStatus'] === 4">已取消</span>
             </div>
           </td>

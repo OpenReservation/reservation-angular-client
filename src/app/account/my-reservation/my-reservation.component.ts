@@ -43,6 +43,10 @@ export class MyReservationComponent implements OnInit {
       DisplayName: "预约人名称" 
     },
     { 
+      ColumnName: 'ReservationPersonPhone',
+      DisplayName: "预约手机号" 
+    },
+    { 
       ColumnName:'ReservationTime',
       DisplayName: "预约时间" 
     },
@@ -100,6 +104,10 @@ export class MyReservationComponent implements OnInit {
       
       this.loadingSvc.isLoading = false;
     })
+  }
+
+  isDateLaterThanNow(date): boolean{
+    return Date.parse(date) > Date.now();
   }
 
   onPageEvent(pageParams){
