@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private oauthService: OAuthService, private router:Router) {
+  constructor(private oauthService: OAuthService) {
   }
 
   ngOnInit(): void {

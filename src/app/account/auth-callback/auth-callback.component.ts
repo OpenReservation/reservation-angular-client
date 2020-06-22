@@ -15,11 +15,8 @@ export class AuthCallbackComponent implements OnInit {
   ngOnInit(): void {
     this.oauthService.loadDiscoveryDocumentAndTryLogin()
     .then(_=> {
-      //var accessToken = this.oauthService.getAccessToken();
-      //console.log(`access token: ${accessToken}`);
-
       this.oauthService.loadUserProfile().then(x=>{
-        this.router.navigate(['/reservation/new']);
+        this.router.navigate(['/reservations/new']);
       });
     });
   }
