@@ -1,6 +1,6 @@
 <div>
   <mat-nav-list>
-    <mat-list-item *ngFor="let notice of noticeList">
+    <mat-list-item [routerLink]="['/notice', notice.NoticeCustomPath]" *ngFor="let notice of noticeList">
       <a matLine [title]="notice.NoticeTitle" [routerLink]="['/notice', notice.NoticeCustomPath]">{{ notice.NoticeTitle }} -- {{ notice.NoticePublishTime | date:'yyyy-MM-dd' }}</a>
     </mat-list-item>
   </mat-nav-list>
