@@ -8,10 +8,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReservationPeriod } from 'src/app/models/ReservationPeriod';
 import { LoadingService } from '../../services/LoadingService';
 import { Router } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { StepperOrientation } from '@angular/cdk/stepper';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-reservation',
-  templateUrl: './new-reservation.component.html'
+  templateUrl: './new-reservation.component.html',
+  styleUrls: ['./new-reservation.component.less']
 })
 export class NewReservationComponent implements OnInit, OnDestroy {
 
@@ -41,13 +46,20 @@ export class NewReservationComponent implements OnInit, OnDestroy {
   };
 
   tencentRecaptcha:TencentCaptcha = null;
+  
+  stepperOrientation: Observable<StepperOrientation>;
 
   constructor(private reservationSvc: ReservationService,
     private reservationPlaceSvc: ReservationPlaceService,
     private _formBuilder: FormBuilder,
     private loadingSvc: LoadingService,
     private router: Router,
+    breakpointObserver: BreakpointObserver,
     public snackBar: MatSnackBar) {
+    
+    this.stepperOrientation = breakpointObserver.observe('(min-width: 800px)')
+      .pipe(map(({matches}) => matches ? 'horizontal' : 'vertical'));
+
     var now = new Date();
     this.minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     this.maxDate = new Date(this.minDate.getTime()+ 24*60*60*1000*7);

@@ -1,5 +1,5 @@
 <div id="reservationContainer">
-    <mat-vertical-stepper linear #stepper (selectionChange)="onStepChange($event)">
+    <mat-stepper [orientation]="(stepperOrientation | async)!" linear #stepper (selectionChange)="onStepChange($event)">
         <mat-step [stepControl]="placeFormGroup">
             <form [formGroup]="placeFormGroup">
                 <ng-template matStepLabel>选择要预约的预约项目</ng-template>
@@ -117,5 +117,5 @@
             <button id="btnSubmit" mat-button [disabled]="submiting" (click)="onSubmitReservation()">提 交</button>
           </div>
         </mat-step>
-    </mat-vertical-stepper>
+    </mat-stepper>
 </div>
