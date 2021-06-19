@@ -2,7 +2,7 @@
     <mat-vertical-stepper linear #stepper (selectionChange)="onStepChange($event)">
         <mat-step [stepControl]="placeFormGroup">
             <form [formGroup]="placeFormGroup">
-                <ng-template matStepLabel>选择要预约的活动室</ng-template>
+                <ng-template matStepLabel>选择要预约的预约项目</ng-template>
                 <mat-form-field>
                   <mat-select formControlName="placeCtrl" (selectionChange)="stepper.next()">
                     <mat-option *ngFor="let place of reservationPlaces" [value]="place.PlaceId">
@@ -57,7 +57,7 @@
                     <input matInput formControlName="unitCtrl" [(ngModel)]="reservation.ReservationUnit" required placeholder="预约单位">
                   </mat-form-field> <br/>
                   <mat-form-field>
-                    <input matInput formControlName="contentCtrl" [(ngModel)]="reservation.ReservationActivityContent" required placeholder="活动内容">
+                    <input matInput formControlName="contentCtrl" [(ngModel)]="reservation.ReservationActivityContent" required placeholder="备注">
                   </mat-form-field> <br/>
                   <mat-form-field>
                     <input matInput formControlName="personNameCtrl" [(ngModel)]="reservation.ReservationPersonName" required placeholder="预约人姓名">
@@ -94,7 +94,7 @@
                     <td>{{reservation.ReservationUnit}}</td>
                 </tr>
                 <tr>
-                    <td>预约活动内容</td>
+                    <td>备注</td>
                     <td>{{reservation.ReservationActivityContent}}</td>
                 </tr>
                 <tr>

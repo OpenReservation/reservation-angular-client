@@ -20,7 +20,7 @@ export class MyReservationComponent implements OnInit {
   columns: Array<ColumnInfo> = [
     { 
       ColumnName: 'ReservationPlaceName',
-      DisplayName: "活动室名称" 
+      DisplayName: "预约项目名称" 
     },
     { 
       ColumnName: 'ReservationForDate',
@@ -36,7 +36,7 @@ export class MyReservationComponent implements OnInit {
     },
     { 
       ColumnName: 'ReservationActivityContent',
-      DisplayName: "活动内容" 
+      DisplayName: "备注" 
     },
     { 
       ColumnName: 'ReservationPersonName',
