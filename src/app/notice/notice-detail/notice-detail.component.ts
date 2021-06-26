@@ -25,6 +25,7 @@ export class NoticeDetailComponent implements OnInit {
       this.svc.GetDetails(noticePath)
         .subscribe(data => {
           this.notice = data;
+          document.getElementById("notice-detail").style.display = "block";
           this.loadingSvc.isLoading = false;
         }, err => {
           console.error(err);
