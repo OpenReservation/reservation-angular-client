@@ -9,11 +9,11 @@ WORKDIR /app
 
 # install and cache app dependencies
 COPY package.json .
-RUN npm install
+RUN yarn
 
 # build the angular app
 COPY . .
-RUN npm run build
+RUN yarn build
 
 FROM base AS Final
 # set author info
