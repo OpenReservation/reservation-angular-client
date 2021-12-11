@@ -20,4 +20,4 @@ steps:
   inputs:
     sshEndpoint: 'weihanli-vm'
     runOptions: inline
-    inline: 'kubectl set image deployment/reservation-client reservation-client=openreservation/angular-client:$(Build.BuildNumber) --record=true'
+    inline: 'kubectl set image deployment/reservation-client reservation-client=openreservation/angular-client:$(Build.BuildNumber)'
