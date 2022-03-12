@@ -266,7 +266,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
           this.router.navigateByUrl("");
         });
       }else{
-        alert(x.ErrorMsg);
+        alert(x.Msg);
         this.captchaValid = false;
         this.submiting = false;
       }
