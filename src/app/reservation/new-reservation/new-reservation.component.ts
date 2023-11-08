@@ -4,7 +4,7 @@ import { ReservationService } from '../../services/ReservationService';
 import { ReservationPlaceService } from 'src/app/services/ReservationPlaceService';
 import { ReservationPlace } from 'src/app/models/ReservationPlace';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray, UntypedFormControl } from '@angular/forms';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReservationPeriod } from 'src/app/models/ReservationPeriod';
 import { LoadingService } from '../../services/LoadingService';
 import { Router } from '@angular/router';
