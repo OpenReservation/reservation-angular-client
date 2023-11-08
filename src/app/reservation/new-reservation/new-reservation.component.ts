@@ -3,7 +3,7 @@ import { Reservation } from '../../models/Reservation';
 import { ReservationService } from '../../services/ReservationService';
 import { ReservationPlaceService } from 'src/app/services/ReservationPlaceService';
 import { ReservationPlace } from 'src/app/models/ReservationPlace';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormArray, UntypedFormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReservationPeriod } from 'src/app/models/ReservationPeriod';
 import { LoadingService } from '../../services/LoadingService';
@@ -26,12 +26,12 @@ export class NewReservationComponent implements OnInit, OnDestroy {
   public minDate: Date;
   public maxDate: Date;
 
-  placeFormGroup: FormGroup;
-  dateFormGroup: FormGroup;
-  periodFormGroup: FormGroup;
-  personFormGroup: FormGroup;
+  placeFormGroup: UntypedFormGroup;
+  dateFormGroup: UntypedFormGroup;
+  periodFormGroup: UntypedFormGroup;
+  personFormGroup: UntypedFormGroup;
 
-  checkedPeriodsFormArray: FormArray;
+  checkedPeriodsFormArray: UntypedFormArray;
 
   reservation: Reservation;
 
@@ -51,7 +51,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
 
   constructor(private reservationSvc: ReservationService,
     private reservationPlaceSvc: ReservationPlaceService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private loadingSvc: LoadingService,
     private router: Router,
     breakpointObserver: BreakpointObserver,
@@ -81,7 +81,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
       personNameCtrl: ['', Validators.minLength(2)],
       phoneCtrl: ['', Validators.pattern(/^1[3-9]\d{9}$/)]
     });
-    this.checkedPeriodsFormArray = this.periodFormGroup.get('periods') as FormArray;
+    this.checkedPeriodsFormArray = this.periodFormGroup.get('periods') as UntypedFormArray;
 
     this.loadData();
 
@@ -206,7 +206,7 @@ export class NewReservationComponent implements OnInit, OnDestroy {
             {
               this.reservationPeriods = x;
               this.checkedPeriodsFormArray.clear();
-              this.reservationPeriods.forEach(x => this.checkedPeriodsFormArray.push(new FormControl(x.Checked)));
+              this.reservationPeriods.forEach(x => this.checkedPeriodsFormArray.push(new UntypedFormControl(x.Checked)));
             });
         }
 
