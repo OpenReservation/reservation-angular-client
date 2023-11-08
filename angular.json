@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ReservationClient:build"
+            "buildTarget": "ReservationClient:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ReservationClient:build:production"
+              "buildTarget": "ReservationClient:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ReservationClient:build"
+            "buildTarget": "ReservationClient:build"
           }
         },
         "test": {
