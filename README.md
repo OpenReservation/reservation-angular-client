@@ -18,4 +18,5 @@ kubectl apply -f k8s-deploy.yaml
 
 ## More
 
-预约服务器端：<https://github.com/OpenReservation/ReservationServer>
+- 预约服务器端：<https://github.com/OpenReservation/ReservationServer>
+- 预约服务 angular 客户端：<https://github.com/OpenReservation/reservation-angular-client>
