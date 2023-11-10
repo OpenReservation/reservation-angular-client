@@ -28,5 +28,5 @@ jobs:
         cache: 'npm'
     - run: npm install -g yarn
     - run: yarn
-    - run: yarn build --if-present
+    - run: yarn build
     # - run: yarn test
