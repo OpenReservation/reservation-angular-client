@@ -18,6 +18,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ReservationClient/browser",
+            "localize": ["zh-CN"],
+            "i18nMissingTranslation": "error",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -45,12 +47,12 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "localize": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -60,6 +62,15 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "localize": ["zh-CN"]
+            },
+            "en": {
+              "localize": ["en"]
             }
           }
         },
@@ -71,6 +82,12 @@
           "configurations": {
             "production": {
               "buildTarget": "ReservationClient:build:production"
+            },
+            "development":{
+              "buildTarget": "ReservationClient:build:development"
+            },
+            "en": {
+              "buildTarget": "ReservationClient:build:development,en"
             }
           }
         },
@@ -184,6 +201,14 @@
             }
           },
           "defaultConfiguration": "production"
+        }
+      },
+      "i18n": {
+        "sourceLocale": "zh-CN",
+        "locales": {
+          "en": {
+            "translation": "src/locale/en.json"
+          }
         }
       }
     }

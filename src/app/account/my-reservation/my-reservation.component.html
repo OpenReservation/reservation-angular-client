@@ -12,10 +12,10 @@
                 <button mat-flat-button color="warn" (click)="cancel(element['ReservationId'])">取消</button>
               </ng-template>
               <ng-template #elseTemplate>
-                <span *ngIf="element['ReservationStatus'] === 0">待审核</span>
-                <span *ngIf="element['ReservationStatus'] === 1">已通过审核</span>
-                <span *ngIf="element['ReservationStatus'] === 2">审核未通过</span>
-                <span *ngIf="element['ReservationStatus'] === 4">已取消</span>
+                <span i18n *ngIf="element['ReservationStatus'] === 0">待审核</span>
+                <span i18n *ngIf="element['ReservationStatus'] === 1">已通过审核</span>
+                <span i18n *ngIf="element['ReservationStatus'] === 2">审核未通过</span>
+                <span i18n *ngIf="element['ReservationStatus'] === 4">已取消</span>
               </ng-template>
             </div>
           </td>

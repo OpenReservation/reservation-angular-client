@@ -1,0 +1,14 @@
+{
+  "locale": "en",
+  "translations": {
+    "648384793834741905": "About OpenReservation",
+    "9089094616376380627": "OpenReservation, open-source reservation system",
+    "5730716019192754509": "About tech",
+    "8313170572122796394": "Contact",
+    "loginLoadingTip": " login loading ...",
+    "7361433381848203362": "UnReviewed",
+    "417411916246438223": "Reserved",
+    "1943031296081914182": "Rejected",
+    "8271850091785840599": "Cancelled"
+  }
+}
