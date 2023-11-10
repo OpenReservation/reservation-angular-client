@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +55,7 @@ import { MyReservationComponent } from './account/my-reservation/my-reservation.
       useClass: ResponseInterceptor,
       multi: true
     },
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })
