@@ -19,4 +19,4 @@ FROM base AS Final
 # set author info
 LABEL maintainer="WeihanLi"
 # copy publish files
-COPY --from=builder /app/dist/ReservationClient /usr/share/nginx/html
+COPY --from=builder /app/dist/ReservationClient/browser /usr/share/nginx/html
