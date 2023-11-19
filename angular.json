@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ReservationClient/browser",
-            "localize": ["zh-CN"],
+            "localize": ["zh"],
             "i18nMissingTranslation": "error",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -67,7 +67,7 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "localize": ["zh-CN"]
+              "localize": ["zh"]
             },
             "en": {
               "localize": ["en"]
@@ -204,7 +204,7 @@
         }
       },
       "i18n": {
-        "sourceLocale": "zh-CN",
+        "sourceLocale": "zh",
         "locales": {
           "en": {
             "translation": "src/locale/en.json"
