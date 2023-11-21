@@ -19,7 +19,11 @@
     <mat-progress-bar color="accent" [ngStyle]="{ 'display': loadingSvc.isLoading?'block':'none'}" mode="query"></mat-progress-bar>
     <router-outlet></router-outlet>
   </section>
-  <!-- <footer>
-    <p style="text-align: center">© {{year}} - {{title}} &nbsp;&nbsp; </p>
-  </footer> -->
+  <footer style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="text-align: right; width: 80%;">© {{year}} - {{title}} &nbsp;&nbsp; </div>
+    <mat-button-toggle-group (change)="localeChanged($event)" [value]="currentLocale" name="language" aria-label="language" style="text-align: right;">
+      <mat-button-toggle value="en">English</mat-button-toggle>
+      <mat-button-toggle value="zh">中文</mat-button-toggle>
+    </mat-button-toggle-group>
+  </footer>
 </mat-sidenav-container>
