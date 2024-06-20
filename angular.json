@@ -15,13 +15,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ReservationClient/browser",
-            "localize": ["zh"],
+            "outputPath": {
+              "base": "dist/ReservationClient"
+            },
+            "localize": [
+              "zh"
+            ],
             "i18nMissingTranslation": "error",
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -34,7 +37,13 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -50,8 +59,6 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "localize": true,
               "budgets": [
                 {
@@ -60,8 +67,7 @@
                   "maximumError": "5mb"
                 }
               ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              "serviceWorker": "ngsw-config.json"
             },
             "development": {
               "optimization": false,
@@ -143,64 +149,6 @@
               "devServerTarget": "ReservationClient:serve:production"
             }
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/ReservationClient/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "buildOptimizer": true,
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "sourceMap": false,
-              "extractLicenses": true,
-              "vendorChunk": false
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@angular-devkit/build-angular:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "ReservationClient:build:development",
-              "serverTarget": "ReservationClient:server:development"
-            },
-            "production": {
-              "browserTarget": "ReservationClient:build:production",
-              "serverTarget": "ReservationClient:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "ReservationClient:build:production",
-              "serverTarget": "ReservationClient:server:production"
-            },
-            "development": {
-              "browserTarget": "ReservationClient:build:development",
-              "serverTarget": "ReservationClient:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       },
       "i18n": {

@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app.material.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
 import { NoticeListComponent } from './notice/notice-list/notice-list.component';
 import { NoticeDetailComponent } from './notice/notice-detail/notice-detail.component';
@@ -20,43 +20,37 @@ import { LoginComponent } from './account/login/login.component';
 import { AuthCallbackComponent } from './account/auth-callback/auth-callback.component';
 import { MyReservationComponent } from './account/my-reservation/my-reservation.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NewReservationComponent,
-    ReservationListComponent,
-    NoticeListComponent,
-    NoticeDetailComponent,
-    AboutComponent,
-    SanitizeHtmlPipe,
-    LoginComponent,
-    AuthCallbackComponent,
-    MyReservationComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AppMaterialModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    OAuthModule.forRoot({
-      resourceServer: {
-        allowedUrls: ['https://reservation.weihanli.xyz/api'],
-        sendAccessToken: true
-      }
-    }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ResponseInterceptor,
-      multi: true
-    },
-    provideClientHydration(),
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NewReservationComponent,
+        ReservationListComponent,
+        NoticeListComponent,
+        NoticeDetailComponent,
+        AboutComponent,
+        SanitizeHtmlPipe,
+        LoginComponent,
+        AuthCallbackComponent,
+        MyReservationComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        AppMaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        OAuthModule.forRoot({
+            resourceServer: {
+                allowedUrls: ['https://reservation.weihanli.xyz/api'],
+                sendAccessToken: true
+            }
+        }),
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ResponseInterceptor,
+            multi: true
+        },
+        provideClientHydration(),
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
