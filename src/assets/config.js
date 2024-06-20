@@ -1,4 +1,6 @@
 var env = {
     ApiBaseUrl: "https://reservation.weihanli.xyz"
 };
-window["__env"]= env;
+if (typeof window !== "undefined") {
+    window["__env"] = env;
+}

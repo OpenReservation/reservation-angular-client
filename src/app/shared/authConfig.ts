@@ -2,32 +2,12 @@
 
 import { AuthConfig } from 'angular-oauth2-oidc';
 
-export const authPasswordFlowConfig: AuthConfig = {
-  // Url of the Identity Provider
-  issuer: 'https://id.weihanli.xyz',
-
-  // URL of the SPA to redirect the user to after login
-  redirectUri: window.location.origin + '/account/callback',
-
-  // The SPA's id. The SPA is registerd with this id at the auth-server
-  clientId: 'reservation-angular-client',
-
-  dummyClientSecret: 'f6f1f917-0899-ef36-63c8-84728f411e7c',
-
-  // set the scope for the permissions the client should request
-  // The first three are defined by OIDC. The 4th is a usecase-specific one
-  scope: 'openid profile',
-
-  showDebugInformation: true,
-
-  oidc: false
-};
-
 export const authCodeFlowConfig: AuthConfig = {
   issuer: 'https://id.weihanli.xyz',
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: window.location.origin + '/account/callback',
+  // redirectUri: window.location.origin + '/account/callback',
+  redirectUri: 'http://localhost:4200' + '/account/callback',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',

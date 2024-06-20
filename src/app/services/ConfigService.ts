@@ -7,8 +7,10 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
 
     public GetApiBaseUrl(): string {
-        if (window["__env"] && window["__env"]["ApiBaseUrl"]) {           
-            return <string>window["__env"]["ApiBaseUrl"];
+        if (typeof window !== "undefined") {
+            if (window["__env"] && window["__env"]["ApiBaseUrl"]) {           
+                return <string>window["__env"]["ApiBaseUrl"];
+            }    
         }
         return environment.apiBaseUrl;
     }
