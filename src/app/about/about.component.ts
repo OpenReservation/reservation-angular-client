@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingService } from '../services/LoadingService';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.less']
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.less'],
+    standalone: false
 })
 export class AboutComponent implements OnInit {
 

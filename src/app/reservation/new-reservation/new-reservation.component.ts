@@ -14,9 +14,10 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-new-reservation',
-  templateUrl: './new-reservation.component.html',
-  styleUrls: ['./new-reservation.component.less']
+    selector: 'app-new-reservation',
+    templateUrl: './new-reservation.component.html',
+    styleUrls: ['./new-reservation.component.less'],
+    standalone: false
 })
 export class NewReservationComponent implements OnInit, OnDestroy {
 

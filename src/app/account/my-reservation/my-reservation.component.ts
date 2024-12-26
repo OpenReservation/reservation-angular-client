@@ -5,9 +5,10 @@ import { Reservation } from 'src/app/models/Reservation';
 import { ColumnInfo } from 'src/app/models/ColumnInfo';
 
 @Component({
-  selector: 'app-my-reservation',
-  templateUrl: './my-reservation.component.html',
-  styleUrls: ['./my-reservation.component.less']
+    selector: 'app-my-reservation',
+    templateUrl: './my-reservation.component.html',
+    styleUrls: ['./my-reservation.component.less'],
+    standalone: false
 })
 export class MyReservationComponent implements OnInit {
 

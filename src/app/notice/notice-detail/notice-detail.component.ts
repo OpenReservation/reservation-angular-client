@@ -6,8 +6,9 @@ import { Notice } from '../../models/Notice';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-notice-detail',
-  templateUrl: './notice-detail.component.html'
+    selector: 'app-notice-detail',
+    templateUrl: './notice-detail.component.html',
+    standalone: false
 })
 export class NoticeDetailComponent implements OnInit {
 

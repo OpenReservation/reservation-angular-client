@@ -5,9 +5,10 @@ import { LoadingService } from '../../services/LoadingService';
 import { ColumnInfo } from 'src/app/models/ColumnInfo';
 
 @Component({
-  selector: 'app-reservation-list',
-  templateUrl: './reservation-list.component.html',
-  styleUrls: ['./reservation-list.component.less']
+    selector: 'app-reservation-list',
+    templateUrl: './reservation-list.component.html',
+    styleUrls: ['./reservation-list.component.less'],
+    standalone: false
 })
 export class ReservationListComponent implements OnInit {
 

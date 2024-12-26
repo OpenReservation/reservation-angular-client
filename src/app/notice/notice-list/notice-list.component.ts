@@ -4,8 +4,9 @@ import { NoticeService } from '../../services/NoticeService';
 import { LoadingService } from '../../services/LoadingService';
 
 @Component({
-  selector: 'app-notice-list',
-  templateUrl: './notice-list.component.html'
+    selector: 'app-notice-list',
+    templateUrl: './notice-list.component.html',
+    standalone: false
 })
 export class NoticeListComponent implements OnInit {
 
