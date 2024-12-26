@@ -15,7 +15,7 @@ RUN yarn
 COPY . .
 RUN yarn build
 
-FROM base AS Final
+FROM base AS final
 # set author info
 LABEL maintainer="WeihanLi"
 # copy publish files
