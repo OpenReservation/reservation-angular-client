@@ -6,8 +6,8 @@ export const authCodeFlowConfig: AuthConfig = {
   issuer: 'https://id.weihanli.xyz',
 
   // URL of the SPA to redirect the user to after login
-  // redirectUri: window.location.origin + '/account/callback',
-  redirectUri: 'http://localhost:4200' + '/account/callback',
+  redirectUri: window.location.origin + '/zh/account/callback',
+  // redirectUri: 'http://localhost:4200' + '/account/callback',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',
