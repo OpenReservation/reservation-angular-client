@@ -20,9 +20,9 @@ export class ResponseInterceptor implements HttpInterceptor {
   ) : Observable<HttpEvent<any>> {
 
     return next.handle(request).pipe(tap(event => {
-      if (event.type === HttpEventType.Response) {
-        console.log('response received');
-      }
+      // if (event.type === HttpEventType.Response) {
+      //   console.debug('response received');
+      // }
     }, (error : HttpErrorResponse) => {
       console.error(error);
 
@@ -39,7 +39,7 @@ export class ResponseInterceptor implements HttpInterceptor {
           duration: 2000,
         });
       }
-      if(this.loadingSvc.isLoading === true){
+      if (this.loadingSvc.isLoading === true){
         this.loadingSvc.isLoading = false;
       }
     }));
