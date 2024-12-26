@@ -20,6 +20,10 @@ import { LoginComponent } from './account/login/login.component';
 import { AuthCallbackComponent } from './account/auth-callback/auth-callback.component';
 import { MyReservationComponent } from './account/my-reservation/my-reservation.component';
 
+import localeEn from '@angular/common/locales/en';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEn, 'en');
+
 @NgModule({ declarations: [
         AppComponent,
         NewReservationComponent,
