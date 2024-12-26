@@ -6,7 +6,15 @@ OpenReservation angular 客户端，使用 angular 17 + material 开发，支持
 
 ## Docker
 
-``` bash
+`Build`
+
+```sh
+docker build -t openreservation/angular-client .
+```
+
+`Run`
+
+```sh
 docker run -d -p 8081:80 openreservation/angular-client:latest
 ```
 
