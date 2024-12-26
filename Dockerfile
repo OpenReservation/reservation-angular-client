@@ -3,7 +3,7 @@ FROM nginx:alpine AS base
 # copy from dist to nginx root dir
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 # set working directory
 WORKDIR /app
 
